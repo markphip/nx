@@ -160,6 +160,11 @@ describe('Command line', () => {
         'npm run affected:e2e -- --files="libs/mylib/index.ts"'
       );
       expect(e2e).toContain('should display welcome message');
+
+      const test = runCommand(
+        'npm run affected:test -- --files="libs/mylib/index.ts"'
+      );
+      expect(test).toContain('should display welcome message');
     },
     1000000
   );

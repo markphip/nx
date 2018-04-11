@@ -84,6 +84,8 @@ function updatePackageJson() {
     packageJson.scripts['affected:build'] =
       './node_modules/.bin/nx affected build';
     packageJson.scripts['affected:e2e'] = './node_modules/.bin/nx affected e2e';
+    packageJson.scripts['affected:test'] =
+      './node_modules/.bin/nx affected test';
 
     packageJson.scripts['affected:dep-graph'] =
       './node_modules/.bin/nx affected dep-graph';

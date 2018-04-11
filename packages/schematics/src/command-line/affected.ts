@@ -29,7 +29,10 @@ export function affected(args: string[]): void {
       build(apps, rest);
       break;
     case 'e2e':
-      e2e(apps, rest);
+      runTests('e2e', apps, rest);
+      break;
+    case 'test':
+      runTests('test', apps, rest);
       break;
     case 'dep-graph':
       generateGraph(yargsParser(rest), projects);
@@ -77,11 +80,11 @@ function build(apps: string[], rest: string[]) {
   }
 }
 
-function e2e(apps: string[], rest: string[]) {
+function runTests(type: string, apps: string[], rest: string[]) {
   if (apps.length > 0) {
     console.log(`Testing ${apps.join(', ')}`);
     apps.forEach(app => {
-      execSync(`node ${ngPath()} e2e ${rest.join(' ')} -a=${app}`, {
+      execSync(`node ${ngPath()} ${type} ${rest.join(' ')} -a=${app}`, {
         stdio: [0, 1, 2]
       });
     });
